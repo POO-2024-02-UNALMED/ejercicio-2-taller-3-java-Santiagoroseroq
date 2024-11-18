@@ -1,5 +1,5 @@
 package compras;
-
+import	gestionHumana.Empleado;
 import java.util.ArrayList;
 
 public class OrdenCompra {
@@ -7,7 +7,7 @@ public class OrdenCompra {
 
     private int codigo;
     private String tipo;
-    private Empleado comprador;
+    public Empleado comprador;
     private ArrayList<Producto> productos;
 
  
@@ -31,7 +31,7 @@ public class OrdenCompra {
 
     public void retirarProducto(Empleado empleado, Producto producto) {
         if (!empleado.tengoPermiso()) {
-            System.out.println("Empleado no tiene permiso para retirar el producto");
+ 
             return;
         }
         retirarProducto(producto);
