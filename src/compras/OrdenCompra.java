@@ -1,15 +1,16 @@
 package compras;
 
-import **;
 import java.util.ArrayList;
 
-public class ** {
+public class OrdenCompra {
 
-    ** int codigo;
-    ** String tipo;
-    ** Empleado comprador;
-    ** ArrayList<Producto> productos;
 
+    private int codigo;
+    private String tipo;
+    private Empleado comprador;
+    private ArrayList<Producto> productos;
+
+ 
     public OrdenCompra(int codigo, String tipo, Empleado comprador,
             ArrayList<Producto> productos) {
         this.codigo = codigo;
@@ -19,25 +20,29 @@ public class ** {
         Producto.totalProductosPedidos += productos.size();
     }
 
-    ** void agregarProducto(Producto producto) {
-        if (producto.tipo.equals(tipo)) {
+
+    public void agregarProducto(Producto producto) {
+        if (producto.getTipo().equals(tipo)) {
             productos.add(producto);
             Producto.totalProductosPedidos++;
         }
     }
 
-    ** void retirarProducto(Empleado empleado, Producto producto) {
+
+    public void retirarProducto(Empleado empleado, Producto producto) {
         if (!empleado.tengoPermiso()) {
-            **
+            System.out.println("Empleado no tiene permiso para retirar el producto");
+            return;
         }
         retirarProducto(producto);
     }
 
+  
     private void retirarProducto(Producto producto) {
-        for (int i = 0; i < **; i++) {
+        for (int i = 0; i < productos.size(); i++) {
             if (producto.getCodigo() == productos.get(i).getCodigo()) {
                 productos.remove(i);
-                producto.totalProductosPedidos--;
+                Producto.totalProductosPedidos--;
                 producto.imprimirNombre();
                 System.out.println(" retirado");
                 break;
@@ -45,8 +50,12 @@ public class ** {
         }
     }
 
-    public ** descontar() {
+    public void descontar() {
         Producto.totalProductosPedidos -= productos.size();
     }
 
+  
+    public int getCodigo() {
+        return codigo;
+    }
 }
