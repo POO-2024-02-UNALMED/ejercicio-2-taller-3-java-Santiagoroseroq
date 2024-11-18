@@ -3,8 +3,8 @@ package gestionHumana;
 public class Empleado {
 
     // Atributos de la clase
-    private final long cedula;
-    private String nombre;
+    public final long cedula;
+    public String nombre;
     private String cargo;
     
     // Constructor
@@ -19,3 +19,4 @@ public class Empleado {
         return cargo.contains("Administrador");
     }
 
+}
